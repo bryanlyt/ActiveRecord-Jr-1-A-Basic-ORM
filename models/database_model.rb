@@ -1,4 +1,5 @@
 require 'sqlite3'
+require 'byebug'
 
 module Database
   class InvalidAttributeError < StandardError;end
@@ -19,8 +20,8 @@ module Database
   end
 
   def self.all
-    Database::Model.execute("SELECT * FROM #{query}").map do |row|
-      self.class.new(row)
+    Database::Model.execute("SELECT * FROM #{self}s").map do |row|
+      self.new(row)
     end
   end
 

@@ -14,7 +14,7 @@ class Student < Database::Model
   # end
 
   def self.where(query, *args)
-    Database::Model.execute("SELECT * FROM students WHERE #{query}", *args).map do |row|
+    Database::Model.execute("SELECT * FROM students WHERE #{self.class.to_s}s", *args).map do |row|
       Student.new(row)
     end
   end

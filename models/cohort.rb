@@ -12,7 +12,7 @@ class Cohort < Database::Model
   # end
 
   def self.where(query, *args)
-    Database::Model.execute("SELECT * FROM cohorts WHERE #{query}", *args).map do |row|
+    Database::Model.execute("SELECT * FROM cohorts WHERE #{self.class.to_s}s", *args).map do |row|
       Cohort.new(row)
     end
   end
