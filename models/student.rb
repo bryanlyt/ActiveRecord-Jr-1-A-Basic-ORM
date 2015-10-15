@@ -13,13 +13,6 @@ class Student < Database::Model
   #   end
   # end
 
-  def self.where(query, *args)
-    Database::Model.execute("SELECT * FROM students WHERE #{self.class.to_s}s", *args).map do |row|
-      Student.new(row)
-    end
-  end
-
-
   def cohort
     Cohort.where('id = ?', self[:cohort_id]).first
   end
